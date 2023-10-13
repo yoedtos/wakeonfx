@@ -18,4 +18,12 @@ public class TestConstants {
     public static final String MOD_HOST = "Mod Simple Host";
     public static final int ID_ONE = 1;
     public static final int ID_TWO = 2;
+    public static final String JSON_HOSTS =
+            "[{\"name\":\"Simple Host\"," +
+                    "\"address\":{\"ip\":\"127.0.0.1\",\"mac\":[\"00\",\"90\",\"27\",\"8B\",\"56\",\"20\"]}," +
+                    "\"port\":9000}," +
+             "{\"name\":\"SecureOn Host\"," +
+                    "\"address\":{\"ip\":\"127.0.0.2\",\"mac\":[\"00\",\"1B\",\"27\",\"8B\",\"56\",\"4F\"]," +
+                    "\"secureOn\":[\"00\",\"00\",\"00\",\"00\",\"00\",\"00\"]}," +
+                    "\"port\":8000}]";
 }

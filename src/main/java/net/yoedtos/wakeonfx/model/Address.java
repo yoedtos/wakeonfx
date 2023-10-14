@@ -1,5 +1,8 @@
 package net.yoedtos.wakeonfx.model;
 
+import static net.yoedtos.wakeonfx.util.Constants.FRAME_LENGTH;
+
+import net.yoedtos.wakeonfx.exceptions.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +32,19 @@ public class Address {
 
     public String[] getSecureOn() {
         return secureOn;
+    }
+
+    public static byte[] hexToBytes(String[] hexStr) throws ValidationException {
+        byte[] hexBytes = new byte[FRAME_LENGTH];
+        try {
+            for (int i = 0; i < hexBytes.length; i++) {
+                hexBytes[i] = (byte) Integer.parseInt(hexStr[i], 16);
+            }
+        } catch (IndexOutOfBoundsException | NumberFormatException e) {
+            LOGGER.error(e.getMessage());
+            throw new ValidationException(e.getMessage());
+        }
+        return hexBytes;
     }
 
     @Override

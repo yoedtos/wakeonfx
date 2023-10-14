@@ -10,14 +10,22 @@ public class TestDataSet {
             return new Address(IP_ADD_ONE, MAC_ADD_ONE, null);
     }
 
+    public static Address createSecureOnAddress() {
+        return new Address(IP_ADD_TWO, MAC_ADD_TWO, SECURE_ON);
+    }
+
     public static Host createSimpleHost() {
         return new Host(SIMPLE_HOST,
                         PORT_NUM_ONE, createSimpleAddress());
     }
 
+    public static Host createSimpleHostMod() {
+        return new Host(SIMPLE_HOST,
+                PORT_NUM_TWO, createSecureOnAddress());
+    }
+
     public static Host createSecureOnHost() {
         return new Host(SECURE_HOST,
-                        PORT_NUM_TWO,
-                        new Address(IP_ADD_TWO, MAC_ADD_TWO, SECURE_ON));
+                        PORT_NUM_TWO, createSecureOnAddress());
     }
 }

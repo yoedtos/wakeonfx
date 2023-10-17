@@ -36,4 +36,8 @@ public class TestDataSet {
     public static List<String> createLinuxPing() {
        return Arrays.asList("ping", "-c1", "-W", String.valueOf(TIMEOUT), IP_ADD_ONE);
     }
+
+    public static Host createLocalHost() {
+        return new Host(SIMPLE_HOST, PORT_NUM_ONE, new Address("192.168.30.10", MAC_ADD_ONE, null));
+    }
 }

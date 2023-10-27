@@ -59,10 +59,10 @@ class HostServiceTest {
     }
 
     @Test
-    void whenGetShouldReturnIndex() throws RepositoryException, ServiceException {
+    void whenGetShouldReturnHost() throws RepositoryException, ServiceException {
         when(mockHostRepo.findById(ID_ONE)).thenReturn(hostOne);
         var result = hostService.get(ID_ONE);
-        assertThat(result).isEqualTo(indexOne);
+        assertThat(result).isEqualTo(hostOne);
         verify(mockHostRepo, times(1)).findById(ID_ONE);
     }
 

@@ -37,15 +37,13 @@ public class HostService {
         return new Index((Integer) id, host.getName());
     }
 
-    public Index get(int id) throws ServiceException {
-        Host host;
+    public Host get(int id) throws ServiceException {
         try {
-            host = repository.findById(id);
+            return repository.findById(id);
         } catch (RepositoryException e) {
             LOGGER.error(e.getMessage());
             throw new ServiceException(e.getMessage());
         }
-        return new Index(id, host.getName());
     }
 
     public void remove(int id) throws ServiceException {
@@ -74,7 +72,7 @@ public class HostService {
         try {
             var hosts = repository.findAll();
             indices = hosts.stream().map(host -> {
-                int id = hosts.indexOf(host) + 1;
+                int id = hosts.indexOf(host);
                 return new Index(id, host.getName());
             }).collect(Collectors.toList());
         } catch (RepositoryException e) {

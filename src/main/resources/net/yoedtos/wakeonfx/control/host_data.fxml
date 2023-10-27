@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="net.yoedtos.wakeonfx.control.HostDataControl">
+   <children>
+      <Label layoutX="207.0" layoutY="14.0" text="Host">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Separator layoutX="30.0" layoutY="80.0" prefHeight="3.0" prefWidth="460.0" />
+      <GridPane layoutY="81.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="506.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="142.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="541.0" minWidth="10.0" prefWidth="364.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Name" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <TextField fx:id="txtName" maxWidth="-Infinity" prefHeight="25.0" prefWidth="366.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="35.0" right="35.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label layoutX="10.0" layoutY="70.0" text="IP v4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <TextField fx:id="txtIp" maxWidth="-Infinity" prefHeight="25.0" prefWidth="366.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="35.0" right="35.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="MAC" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <TextField fx:id="txtMac0" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMac1" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMac2" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMac3" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMac4" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtMac5" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <Label text="SecureOn" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <HBox fx:id="hboxSec" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <TextField fx:id="txtSec0" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtSec1" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtSec2" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtSec3" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtSec4" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtSec5" prefHeight="25.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <GridPane.margin>
+                  <Insets left="35.0" right="35.0" />
+               </GridPane.margin>
+            </HBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label layoutX="193.0" layoutY="33.0" text="Port" />
+                  <TextField fx:id="txtPort" layoutX="230.0" layoutY="28.0" prefHeight="25.0" prefWidth="96.0" />
+                  <CheckBox fx:id="ckBxSecure" layoutX="39.0" layoutY="30.0" mnemonicParsing="false" onAction="#setSecure" text="Secure On" />
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <Separator layoutX="30.0" layoutY="466.0" prefHeight="3.0" prefWidth="460.0" />
+      <Button fx:id="btnCancel" layoutX="289.0" layoutY="486.0" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="60.0">
+         <tooltip><Tooltip text="Cancel" /></tooltip>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+               <image>
+                  <Image url="@/icon/cancel.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btnSave" layoutX="384.0" layoutY="486.0" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="60.0">
+         <tooltip><Tooltip text="Save" /></tooltip>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+               <image>
+                  <Image url="@/icon/save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

@@ -4,7 +4,6 @@ import static net.yoedtos.wakeonfx.control.Constants.HOST_DATA_SIZE;
 import static net.yoedtos.wakeonfx.util.TestConstants.*;
 import static net.yoedtos.wakeonfx.util.TestDataSet.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.openMocks;
@@ -14,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import net.yoedtos.wakeonfx.exceptions.ServiceException;
-import net.yoedtos.wakeonfx.exceptions.ValidationException;
 import net.yoedtos.wakeonfx.model.Host;
 import net.yoedtos.wakeonfx.service.HostService;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,11 +40,18 @@ class HostDataControlTest extends UIBaseTest {
             MAC_ADD_TWO[3], MAC_ADD_TWO[4], MAC_ADD_TWO[5],
             String.valueOf(PORT_NUM_TWO)};
 
+    private String[] txtDataMod = new String[]
+            {SIMPLE_HOST, IP_ADD_TWO,
+            MAC_ADD_TWO[0], MAC_ADD_TWO[1], MAC_ADD_TWO[2],
+            MAC_ADD_TWO[3], MAC_ADD_TWO[4], MAC_ADD_TWO[5],
+            String.valueOf(PORT_NUM_TWO)};
+
     private String[] txtDataSecOn = new String[]
             {SECURE_ON[0], SECURE_ON[1], SECURE_ON[2],
             SECURE_ON[3], SECURE_ON[4], SECURE_ON[5]};
 
     private Host hostOne;
+    private Index indexOne;
 
     @Mock
     private HostService mockHostService;
@@ -56,6 +61,7 @@ class HostDataControlTest extends UIBaseTest {
     @BeforeEach
     void setup() {
         hostOne = createSimpleHost();
+        indexOne = new Index(ID_ONE, SIMPLE_HOST);
         openMocks(this);
     }
 
@@ -71,7 +77,6 @@ class HostDataControlTest extends UIBaseTest {
 
     @Test
     void whenAddThenSaveSimpleHostShouldHaveIndexObject() throws ServiceException {
-        var indexOne = new Index(ID_ONE, SIMPLE_HOST);
         when(mockHostService.create(any())).thenReturn(indexOne);
 
         for (int i = 0; i < txtComIds.length; i++) {
@@ -114,5 +119,37 @@ class HostDataControlTest extends UIBaseTest {
         }
         clickOn("#btnSave");
         verifyThat(View.Error.SAVE, NodeMatchers.isVisible());
+    }
+
+    @Test
+    void whenEditSaveSimpleHostShouldHaveIndexObject() throws Exception {
+        var hostMod = createSimpleHostMod();
+        when(mockHostService.get(indexOne.getId())).thenReturn(hostOne);
+        hostDataControl.onObjectDefined(ID_ONE);
+
+        var fields = extractFields(txtComIds);
+
+        assertThat(fields.get(0).isDisabled()).isTrue();
+        for (int i = 0; i <fields.size() ; i++) {
+            assertThat(fields.get(i).getText()).isEqualTo(txtDataOne[i]);
+        }
+
+        fields.remove(0);
+        clearFields(fields);
+
+        when(mockHostService.modify(any())).thenReturn(indexOne);
+        for (int i = 1; i < txtComIds.length ; i++) {
+            clickOn(txtComIds[i]).write(txtDataMod[i]);
+        }
+
+        clickOn("#ckBxSecure");
+        for (int i = 0; i < txtSecOnIds.length; i++) {
+            clickOn(txtSecOnIds[i]).write(txtDataSecOn[i]);
+        }
+
+        clickOn("#btnSave");
+        var index = hostDataControl.getIndex();
+        assertThat(index).isEqualTo(indexOne);
+        verify(mockHostService, times(1)).modify(hostMod);
     }
 }

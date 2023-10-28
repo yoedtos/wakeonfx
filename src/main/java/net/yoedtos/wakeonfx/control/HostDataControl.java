@@ -6,7 +6,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import net.yoedtos.wakeonfx.exceptions.ServiceException;
 import net.yoedtos.wakeonfx.model.Address;
 import net.yoedtos.wakeonfx.model.Host;
 import net.yoedtos.wakeonfx.service.HostService;
@@ -30,6 +29,7 @@ public class HostDataControl implements Control {
     private Stage stage;
     private Index index;
     private HostService hostService;
+    private boolean editMode;
 
     public HostDataControl() {
         this.hostService = new HostService();
@@ -50,7 +50,10 @@ public class HostDataControl implements Control {
     public void save() {
        var host = mapFromUIToHost();
         try {
-           index = hostService.create(host);
+            if (editMode)
+                index = hostService.modify(host);
+            else
+                index = hostService.create(host);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             new Alert(Alert.AlertType.ERROR, View.Error.SAVE).show();
@@ -70,7 +73,17 @@ public class HostDataControl implements Control {
 
     @Override
     public void onObjectDefined(Object object) throws Exception {
-
+        try {
+            var id = (int)object;
+            var host = hostService.get(id);
+            txtName.setText(host.getName());
+            txtName.setDisable(true);
+            mapFromHostToUI(host);
+            editMode = true;
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            throw e;
+        }
     }
 
     private Host mapFromUIToHost() {
@@ -95,5 +108,27 @@ public class HostDataControl implements Control {
         return  new Host(txtName.getText(),
                         Integer.parseInt(txtPort.getText()),
                         new Address(txtIp.getText(), mac, secureOn));
+    }
+
+    private void mapFromHostToUI(Host host) {
+        txtName.setText(host.getName());
+        txtPort.setText(String.valueOf(host.getPort()));
+        txtIp.setText(host.getAddress().getIp());
+        txtMac0.setText(host.getAddress().getMac()[0]);
+        txtMac1.setText(host.getAddress().getMac()[1]);
+        txtMac2.setText(host.getAddress().getMac()[2]);
+        txtMac3.setText(host.getAddress().getMac()[3]);
+        txtMac4.setText(host.getAddress().getMac()[4]);
+        txtMac5.setText(host.getAddress().getMac()[5]);
+        if (host.getAddress().getSecureOn() != null) {
+            ckBxSecure.setDisable(false);
+            ckBxSecure.setSelected(true);
+            txtSec0.setText(host.getAddress().getSecureOn()[0]);
+            txtSec1.setText(host.getAddress().getSecureOn()[1]);
+            txtSec2.setText(host.getAddress().getSecureOn()[2]);
+            txtSec3.setText(host.getAddress().getSecureOn()[3]);
+            txtSec4.setText(host.getAddress().getSecureOn()[4]);
+            txtSec5.setText(host.getAddress().getSecureOn()[5]);
+        }
     }
 }

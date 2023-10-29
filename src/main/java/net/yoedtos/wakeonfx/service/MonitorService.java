@@ -1,5 +1,6 @@
 package net.yoedtos.wakeonfx.service;
 
+import net.yoedtos.wakeonfx.control.Index;
 import net.yoedtos.wakeonfx.control.Status;
 import net.yoedtos.wakeonfx.core.net.NetMonitor;
 import net.yoedtos.wakeonfx.exceptions.NetworkException;
@@ -10,6 +11,10 @@ import org.slf4j.LoggerFactory;
 
 public class MonitorService {
     private static final Logger LOGGER = LoggerFactory.getLogger(MonitorService.class);
+
+    public Status monitor(Index index) throws ServiceException {
+        return null;
+    }
 
     public Status monitor(Host host) throws ServiceException {
         NetMonitor netMonitor = new NetMonitor(host);

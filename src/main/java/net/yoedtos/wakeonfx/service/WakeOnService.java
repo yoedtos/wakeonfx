@@ -1,5 +1,6 @@
 package net.yoedtos.wakeonfx.service;
 
+import net.yoedtos.wakeonfx.control.Index;
 import net.yoedtos.wakeonfx.core.WakeOn;
 import net.yoedtos.wakeonfx.core.net.INetHandler;
 import net.yoedtos.wakeonfx.core.net.LocalNetHandler;
@@ -16,6 +17,9 @@ import org.slf4j.LoggerFactory;
 
 public class WakeOnService {
     private static final Logger LOGGER = LoggerFactory.getLogger(WakeOnService.class);
+
+    public void wake(Index index) throws ServiceException {
+    }
 
     public void wake(Host host) throws ServiceException {
         try {

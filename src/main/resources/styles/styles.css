@@ -1,0 +1,12 @@
+.hostVbox {
+      -fx-border-color: gray;
+      -fx-border-insets: 5;
+      -fx-border-width: 1;
+      -fx-border-style: solid inside;
+      -fx-padding: 5 10 10 10;
+}
+
+.hostLabel {
+      -fx-font-weight: bold;
+      -fx-padding: 10 10 10 10;
+}

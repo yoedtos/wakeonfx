@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class NetMonitor {
         try {
             if (!isReachable(host.getAddress().getIp())) {
                 LOGGER.error("Error: Is not reachable");
-                throw new NetworkException("Can't reach host");
+                return false;
             }
         } catch (CoreException e) {
             LOGGER.error("Error: {} ", e.getMessage());
@@ -45,9 +46,10 @@ public class NetMonitor {
             if (socket.isConnected()) {
                 result = true;
             }
+        } catch (UnknownHostException e) {
+            throw new NetworkException(e.getMessage());
         } catch (IOException e) {
             LOGGER.error("Failed to connect: {}", e.getMessage());
-            throw new NetworkException(e.getMessage());
         }
         return result;
     }

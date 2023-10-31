@@ -4,6 +4,7 @@ import static net.yoedtos.wakeonfx.util.TestConstants.*;
 import static net.yoedtos.wakeonfx.util.TestDataSet.createLinuxPing;
 import static net.yoedtos.wakeonfx.util.TestDataSet.createSimpleHost;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
@@ -61,10 +62,9 @@ class NetMonitorTest {
         assertTrue(monitor.isHostServiceOnLine());
     }
     @Test
-    void testHostServiceIsOffLine() {
+    void testHostServiceIsOffLine() throws NetworkException {
         monitor = new NetMonitor(new Host(host.getName(), 8000, host.getAddress()));
-        assertThatExceptionOfType(NetworkException.class)
-                .isThrownBy(() -> monitor.isHostServiceOnLine());
+        assertFalse(monitor.isHostServiceOnLine());
     }
 
     @Test

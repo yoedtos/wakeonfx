@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="510.0"
+            xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@/icon/net_pc.png" />
+         </image>
+      </ImageView>
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="70.0" layoutY="42.0" text="WakeOn FX!">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <Label layoutX="96.0" layoutY="123.0" text="JavaFX Wake On Lan client" />
+            <Label layoutX="52.0" layoutY="195.0" text="Version: 1.0" />
+            <Label layoutX="52.0" layoutY="220.0" text="Author: yoedtos" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

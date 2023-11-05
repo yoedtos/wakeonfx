@@ -7,4 +7,5 @@ class Constants {
      */
     public static final int[] HOST_DATA_SIZE = new int[]{500, 540};
     public static final int[] ABOUT_DLG_SIZE = new int[]{510, 270};
+    public static final int[] MAIN_VIEW_SIZE = new int[]{640, 400};
 }

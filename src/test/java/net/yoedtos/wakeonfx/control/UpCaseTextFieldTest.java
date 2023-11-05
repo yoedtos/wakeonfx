@@ -7,14 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 
-class LimitedTextFieldTest extends UIBaseTest {
-    private static final String ID_FIELD = "txtLimited";
+class UpCaseTextFieldTest extends UIBaseTest {
+    private static final String ID_FIELD = "txtUpCase";
 
-    private LimitedTextField textField;
+    private UpCaseTextField textField;
 
     @Override
     public void start(Stage stage) {
-        textField = new LimitedTextField();
+        textField = new UpCaseTextField();
         textField.setId(ID_FIELD);
         var scene = new Scene(textField);
         stage.setScene(scene);
@@ -22,10 +22,11 @@ class LimitedTextFieldTest extends UIBaseTest {
     }
 
     @Test
-    void whenLimitIsFiveShouldHaveFieldWithFiveCharacter() {
+    void whenLimitIsFiveShouldHaveFieldWithFiveCharacterInUpperCase() {
         textField.setLimit(5);
         clickOn("#"+ID_FIELD).write(TYPED_STRING);
 
-        assertThat(textField.getText()).isEqualTo(TYPED_STRING.substring(0, 5));
+        var expected = TYPED_STRING.substring(0, 5).toUpperCase();
+        assertThat(textField.getText()).isEqualTo(expected);
     }
 }

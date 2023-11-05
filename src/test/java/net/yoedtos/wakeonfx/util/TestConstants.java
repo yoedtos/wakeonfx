@@ -74,4 +74,5 @@ public class TestConstants {
     };
 
     public static final String COMMAND_ERROR = "Process command error";
+    public static final String TYPED_STRING = "This sentence makes no sense";
 }

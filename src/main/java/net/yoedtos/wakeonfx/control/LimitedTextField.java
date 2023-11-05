@@ -4,7 +4,7 @@ import javafx.scene.control.TextField;
 
 public class LimitedTextField extends TextField {
 
-    private int limit;
+    protected int limit;
 
     @Override
     public void replaceText(int start, int end, String text) {
@@ -18,7 +18,7 @@ public class LimitedTextField extends TextField {
             super.replaceSelection(replacement);
     }
 
-    private boolean validate() {
+    protected boolean validate() {
         return lengthProperty().lessThan(limit).get();
     }
 

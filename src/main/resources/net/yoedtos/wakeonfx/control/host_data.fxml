@@ -7,6 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <?import net.yoedtos.wakeonfx.control.LimitedTextField?>
+<?import net.yoedtos.wakeonfx.control.UpCaseTextField?>
 <AnchorPane prefHeight="540.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="net.yoedtos.wakeonfx.control.HostDataControl">
    <children>
@@ -44,71 +45,71 @@
             <Label text="MAC" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <children>
-                  <LimitedTextField fx:id="txtMac0" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  <UpCaseTextField fx:id="txtMac0" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtMac1" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtMac1" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtMac2" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtMac2" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtMac3" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtMac3" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtMac4" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtMac4" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtMac5" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtMac5" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
+                  </UpCaseTextField>
                </children>
             </HBox>
             <Label text="SecureOn" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <HBox fx:id="hboxSec" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <LimitedTextField fx:id="txtSec0" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  <UpCaseTextField fx:id="txtSec0" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtSec1" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtSec1" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtSec2" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtSec2" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtSec3" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtSec3" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtSec4" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtSec4" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
-                  <LimitedTextField fx:id="txtSec5" prefHeight="25.0" prefWidth="40.0" limit="2">
+                  </UpCaseTextField>
+                  <UpCaseTextField fx:id="txtSec5" prefHeight="25.0" prefWidth="40.0" limit="2">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
-                  </LimitedTextField>
+                  </UpCaseTextField>
                </children>
                <GridPane.margin>
                   <Insets left="35.0" right="35.0" />

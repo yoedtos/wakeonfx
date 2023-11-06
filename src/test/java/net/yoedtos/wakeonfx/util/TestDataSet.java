@@ -45,4 +45,12 @@ public class TestDataSet {
     public static Index createIndexOne() {
         return new Index(ID_ONE, SIMPLE_HOST);
     }
+
+    public static String[] createTxtDataOne() {
+        return new String[]
+            {SIMPLE_HOST, IP_ADD_ONE,
+                    MAC_ADD_ONE[0], MAC_ADD_ONE[1], MAC_ADD_ONE[2],
+                    MAC_ADD_ONE[3], MAC_ADD_ONE[4], MAC_ADD_ONE[5],
+                    String.valueOf(PORT_NUM_ONE)};
+    }
 }

@@ -3,6 +3,7 @@ package net.yoedtos.wakeonfx.control;
 import static net.yoedtos.wakeonfx.control.Constants.MAIN_VIEW_SIZE;
 import static net.yoedtos.wakeonfx.control.View.Icons.APP;
 import static net.yoedtos.wakeonfx.control.View.MAIN_VIEW;
+import static net.yoedtos.wakeonfx.control.View.Text.APP_NAME;
 
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -19,7 +20,7 @@ public class MainGUI extends Application {
         scene.getStylesheets()
                 .add(Objects.requireNonNull(getClass()
                         .getResource("/styles/styles.css")).toExternalForm());
-        stage.setTitle("WakeOn FX!");
+        stage.setTitle(APP_NAME);
         stage.setScene(scene);
         stage.getIcons().add(new Image(APP));
         stage.show();

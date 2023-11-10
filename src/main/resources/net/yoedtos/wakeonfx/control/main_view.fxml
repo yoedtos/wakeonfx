@@ -76,9 +76,9 @@
           </padding>
       </ToolBar>
       <Separator />
-      <ScrollPane prefHeight="380.0" prefWidth="640.0">
+      <ScrollPane prefHeight="380.0" prefWidth="640.0" fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
          <content>
-            <TilePane fx:id="tpHosts" prefWidth="640.0" />
+            <TilePane fx:id="tpHosts" />
          </content>
       </ScrollPane>
   </children>

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class HostRepository implements Repository<Host> {
     private static final Logger LOGGER = LoggerFactory.getLogger(HostRepository.class);
@@ -26,7 +28,7 @@ public class HostRepository implements Repository<Host> {
         try {
             id = hosts.size();
             hosts.add(id, host);
-            cache.write();
+            cache.update(clean(hosts));
         } catch (FSException e) {
             LOGGER.error(e.getMessage());
             throw new RepositoryException(e.getMessage());
@@ -38,9 +40,7 @@ public class HostRepository implements Repository<Host> {
     public void remove(int id) throws RepositoryException {
         try {
             hosts.set(id, null);
-            var newHosts = new ArrayList<>(hosts);
-            newHosts.remove(id);
-            cache.update(newHosts);
+            cache.update(clean(hosts));
         } catch (FSException e) {
             LOGGER.error(e.getMessage());
             throw new RepositoryException(e.getMessage());
@@ -65,7 +65,7 @@ public class HostRepository implements Repository<Host> {
                 if (host.getName().equals(hosts.get(i).getName())) {
                     id = i;
                     hosts.set(i ,host);
-                    cache.write();
+                    cache.update(clean(hosts));
                     break;
                 }
             }
@@ -84,5 +84,11 @@ public class HostRepository implements Repository<Host> {
             LOGGER.error(e.getMessage());
             throw new RepositoryException(e.getMessage());
         }
+    }
+
+    private List clean(List<Host> hosts) {
+        return hosts.stream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 }

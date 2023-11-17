@@ -29,15 +29,6 @@ class Cache {
         }
     }
 
-    public void write() throws FSException {
-        try {
-            fileHandler.write(hosts);
-        } catch (FSException e) {
-            LOGGER.error(e.getMessage());
-            throw new FSException(e.getMessage());
-        }
-    }
-
     public void update(List newHosts) throws FSException {
         try {
             fileHandler.write(newHosts);

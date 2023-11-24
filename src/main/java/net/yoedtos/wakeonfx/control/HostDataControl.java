@@ -16,15 +16,15 @@ public class HostDataControl implements Control {
     private static final Logger LOGGER = LoggerFactory.getLogger(HostDataControl.class);
 
     @FXML
-    TextField txtName, txtIp, txtPort;
+    private TextField txtName, txtIp, txtPort;
     @FXML
-    TextField txtMac0, txtMac1, txtMac2, txtMac3, txtMac4, txtMac5;
+    private TextField txtMac0, txtMac1, txtMac2, txtMac3, txtMac4, txtMac5;
     @FXML
-    TextField txtSec0, txtSec1, txtSec2, txtSec3, txtSec4, txtSec5;
+    private TextField txtSec0, txtSec1, txtSec2, txtSec3, txtSec4, txtSec5;
     @FXML
-    HBox hboxSec;
+    private HBox hboxSec;
     @FXML
-    CheckBox ckBxSecure;
+    private CheckBox ckBxSecure;
 
     private Stage stage;
     private Index index;

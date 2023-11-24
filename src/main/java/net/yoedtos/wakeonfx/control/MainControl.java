@@ -33,11 +33,11 @@ public class MainControl implements Initializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainControl.class);
 
     @FXML
-    Button btnEdit;
+    private Button btnEdit;
     @FXML
-    Button btnDrop;
+    private Button btnDrop;
     @FXML
-    TilePane tpHosts;
+    private TilePane tpHosts;
 
     private List<Index> indexList;
     private final List<HostControl> hostControls;

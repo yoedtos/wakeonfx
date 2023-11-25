@@ -8,18 +8,18 @@ public class LimitedTextField extends TextField {
 
     @Override
     public void replaceText(int start, int end, String text) {
-        if (validate())
+        if (validate(text))
             super.replaceText(start, end, text);
     }
 
     @Override
     public void replaceSelection(String replacement) {
-        if (validate())
+        if (validate(replacement))
             super.replaceSelection(replacement);
     }
 
-    protected boolean validate() {
-        return lengthProperty().lessThan(limit).get();
+    protected boolean validate(String text) {
+        return text.isEmpty() || lengthProperty().lessThan(limit).get();
     }
 
     public int getLimit() {

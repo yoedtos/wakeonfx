@@ -6,6 +6,7 @@ import static net.yoedtos.wakeonfx.control.View.MAIN_VIEW;
 import static net.yoedtos.wakeonfx.control.View.Text.APP_NAME;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -25,6 +26,10 @@ public class MainGUI extends Application {
         stage.getIcons().add(new Image(APP));
         stage.show();
         stage.centerOnScreen();
+        stage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public static void begin() {

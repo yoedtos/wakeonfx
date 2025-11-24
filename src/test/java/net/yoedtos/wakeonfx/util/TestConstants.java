@@ -13,6 +13,8 @@ public class TestConstants {
     public static final int PORT_NUM_ONE = 9000;
     public static final int PORT_NUM_TWO = 8000;
     public static final int PORT_NUM_MOD = 5000;
+    public static final int TIME_OUT_ONE = 40;
+    public static final int TIME_OUT_MOD = 60;
     public static final String SIMPLE_HOST = "Simple Host";
     public static final String SECURE_HOST = "SecureOn Host";
     public static final String MOD_HOST = "Mod Simple Host";

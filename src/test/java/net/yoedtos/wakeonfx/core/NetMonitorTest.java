@@ -63,7 +63,7 @@ class NetMonitorTest {
     }
     @Test
     void testHostServiceIsOffLine() throws NetworkException {
-        monitor = new NetMonitor(new Host(host.getName(), 8000, host.getAddress()));
+        monitor = new NetMonitor(new Host(host.getName(), 8000, TIME_OUT_ONE, host.getAddress()));
         assertFalse(monitor.isHostServiceOnLine());
     }
 

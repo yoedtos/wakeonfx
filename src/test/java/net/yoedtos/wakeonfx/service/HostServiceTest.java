@@ -87,7 +87,7 @@ class HostServiceTest {
     @Test
     void whenModifyShouldReturnModIndex() throws ServiceException, RepositoryException {
         Address address =  new Address(IP_ADD_MOD, MAC_ADD_MOD, null);
-        Host hostMod = new Host(MOD_HOST, PORT_NUM_MOD, address);
+        Host hostMod = new Host(MOD_HOST, PORT_NUM_MOD, TIME_OUT_MOD, address);
         when(mockHostRepo.merge(hostMod)).thenReturn(ID_ONE);
         var result = hostService.modify(hostMod);
         verify(mockHostRepo, times(1)).merge(hostMod);

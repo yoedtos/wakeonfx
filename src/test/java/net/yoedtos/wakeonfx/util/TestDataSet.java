@@ -21,17 +21,17 @@ public class TestDataSet {
 
     public static Host createSimpleHost() {
         return new Host(SIMPLE_HOST,
-                        PORT_NUM_ONE, createSimpleAddress());
+                        PORT_NUM_ONE, TIME_OUT_ONE, createSimpleAddress());
     }
 
     public static Host createSimpleHostMod() {
         return new Host(SIMPLE_HOST,
-                PORT_NUM_TWO, createSecureOnAddress());
+                PORT_NUM_TWO, TIME_OUT_MOD, createSecureOnAddress());
     }
 
     public static Host createSecureOnHost() {
         return new Host(SECURE_HOST,
-                        PORT_NUM_TWO, createSecureOnAddress());
+                        PORT_NUM_TWO, TIME_OUT_ONE, createSecureOnAddress());
     }
 
     public static List<String> createLinuxPing() {
@@ -39,7 +39,7 @@ public class TestDataSet {
     }
 
     public static Host createLocalHost() {
-        return new Host(SIMPLE_HOST, PORT_NUM_ONE, new Address("192.168.30.10", MAC_ADD_ONE, null));
+        return new Host(SIMPLE_HOST, PORT_NUM_ONE, TIME_OUT_ONE, new Address("192.168.30.10", MAC_ADD_ONE, null));
     }
 
     public static Index createIndexOne() {

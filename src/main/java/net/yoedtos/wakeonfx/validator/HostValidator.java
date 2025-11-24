@@ -9,6 +9,8 @@ public class HostValidator {
     private static final int PORT_MIN = 1;
     private static final int PORT_MAX = 65536;
     private static final int BLOCK_SIZE = 4;
+    private static final int TIME_OUT_MIN = 1;
+    private static final int TIME_OUT_MAX = 300;
 
     public void validate(Host host) throws ValidationException {
         if (host.getName().isEmpty() || host.getName().length() > NAME_MAX) {
@@ -16,6 +18,9 @@ public class HostValidator {
         }
         if(host.getPort() < PORT_MIN || host.getPort() > PORT_MAX) {
             throw new ValidationException("Port range is invalid");
+        }
+        if(host.getTimeout() < TIME_OUT_MIN || host.getTimeout() > TIME_OUT_MAX) {
+            throw new ValidationException("Timeout range is invalid");
         }
         Address address = host.getAddress();
         var blocks = address.getIp().split("\\.");

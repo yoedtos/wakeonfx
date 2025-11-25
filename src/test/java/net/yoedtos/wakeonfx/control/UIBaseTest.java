@@ -17,7 +17,7 @@ public abstract class UIBaseTest extends ApplicationTest {
             {"#txtName", "#txtIp",
             "#txtMac0", "#txtMac1", "#txtMac2",
             "#txtMac3", "#txtMac4", "#txtMac5",
-            "#txtPort"};
+            "#txtPort", "#txtTimeout"};
 
     protected String[] txtSecOnIds = new String[]
             {"#txtSec0", "#txtSec1", "#txtSec2",

@@ -51,6 +51,7 @@ public class TestDataSet {
             {SIMPLE_HOST, IP_ADD_ONE,
                     MAC_ADD_ONE[0], MAC_ADD_ONE[1], MAC_ADD_ONE[2],
                     MAC_ADD_ONE[3], MAC_ADD_ONE[4], MAC_ADD_ONE[5],
-                    String.valueOf(PORT_NUM_ONE)};
+                    String.valueOf(PORT_NUM_ONE),
+                    String.valueOf(TIME_OUT_ONE)};
     }
 }

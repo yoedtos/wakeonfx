@@ -34,13 +34,15 @@ class HostDataControlTest extends UIBaseTest {
             {SECURE_HOST, IP_ADD_TWO,
             MAC_ADD_TWO[0], MAC_ADD_TWO[1], MAC_ADD_TWO[2],
             MAC_ADD_TWO[3], MAC_ADD_TWO[4], MAC_ADD_TWO[5],
-            String.valueOf(PORT_NUM_TWO)};
+            String.valueOf(PORT_NUM_TWO),
+            String.valueOf(TIME_OUT_ONE)};
 
     private String[] txtDataMod = new String[]
             {SIMPLE_HOST, IP_ADD_TWO,
             MAC_ADD_TWO[0], MAC_ADD_TWO[1], MAC_ADD_TWO[2],
             MAC_ADD_TWO[3], MAC_ADD_TWO[4], MAC_ADD_TWO[5],
-            String.valueOf(PORT_NUM_TWO)};
+            String.valueOf(PORT_NUM_TWO),
+            String.valueOf(TIME_OUT_MOD)};
 
     private String[] txtDataSecOn = new String[]
             {SECURE_ON[0], SECURE_ON[1], SECURE_ON[2],

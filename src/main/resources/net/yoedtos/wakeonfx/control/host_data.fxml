@@ -117,8 +117,10 @@
             </HBox>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <Label layoutX="193.0" layoutY="33.0" text="Port" />
-                  <LimitedTextField fx:id="txtPort" layoutX="230.0" layoutY="28.0" prefHeight="25.0" prefWidth="96.0" limit="5"/>
+                  <Label layoutX="250.0" layoutY="33.0" text="Port" />
+                  <LimitedTextField fx:id="txtPort" layoutX="280.0" layoutY="28.0" prefHeight="25.0" prefWidth="56.0" limit="5"/>
+                  <Label layoutX="140.0" layoutY="33.0" text="Timeout" />
+                  <LimitedTextField fx:id="txtTimeout" layoutX="195.0" layoutY="28.0" prefHeight="25.0" prefWidth="40.0" limit="3"/>
                   <CheckBox fx:id="ckBxSecure" layoutX="39.0" layoutY="30.0" mnemonicParsing="false" onAction="#setSecure" text="Secure On" />
                </children>
             </AnchorPane>

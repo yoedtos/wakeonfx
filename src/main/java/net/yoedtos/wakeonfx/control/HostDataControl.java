@@ -16,7 +16,7 @@ public class HostDataControl implements Control {
     private static final Logger LOGGER = LoggerFactory.getLogger(HostDataControl.class);
 
     @FXML
-    private TextField txtName, txtIp, txtPort;
+    private TextField txtName, txtIp, txtPort, txtTimeout;
     @FXML
     private TextField txtMac0, txtMac1, txtMac2, txtMac3, txtMac4, txtMac5;
     @FXML
@@ -107,12 +107,14 @@ public class HostDataControl implements Control {
 
         return  new Host(txtName.getText(),
                         Integer.parseInt(txtPort.getText()),
+                        Integer.parseInt(txtTimeout.getText()),
                         new Address(txtIp.getText(), mac, secureOn));
     }
 
     private void mapFromHostToUI(Host host) {
         txtName.setText(host.getName());
         txtPort.setText(String.valueOf(host.getPort()));
+        txtTimeout.setText(String.valueOf(host.getTimeout()));
         txtIp.setText(host.getAddress().getIp());
         txtMac0.setText(host.getAddress().getMac()[0]);
         txtMac1.setText(host.getAddress().getMac()[1]);

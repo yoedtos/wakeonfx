@@ -1,7 +1,7 @@
 package net.yoedtos.wakeonfx.control;
 
-import static net.yoedtos.wakeonfx.util.TestConstants.ID_ONE;
-import static net.yoedtos.wakeonfx.util.TestConstants.SIMPLE_HOST;
+import static net.yoedtos.wakeonfx.util.TestConstants.*;
+import static net.yoedtos.wakeonfx.util.TestDataSet.createSimpleAddress;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.openMocks;
@@ -13,6 +13,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import net.yoedtos.wakeonfx.exceptions.ServiceException;
+import net.yoedtos.wakeonfx.model.Host;
+import net.yoedtos.wakeonfx.service.HostService;
 import net.yoedtos.wakeonfx.service.MonitorService;
 import net.yoedtos.wakeonfx.service.WakeOnService;
 import org.junit.jupiter.api.AfterEach;
@@ -31,6 +33,8 @@ import java.util.concurrent.TimeUnit;
 @ExtendWith(MockitoExtension.class)
 class HostControlTest extends UIBaseTest {
 
+    @Mock
+    private HostService mockHostService;
     @Mock
     private WakeOnService mockWakeOnService;
     @Mock
@@ -59,6 +63,19 @@ class HostControlTest extends UIBaseTest {
         stage.show();
     }
 
+    @Test
+    void whenClickWakeShouldBlinkThenShowStatus_Lime() throws ServiceException {
+        var host = new Host(SIMPLE_HOST, PORT_NUM_ONE, 20, createSimpleAddress());
+        when(mockHostService.get(anyInt())).thenReturn(host);
+        when(mockMonitorService.monitor(any(Index.class))).thenReturn(Status.ON_LINE);
+        hostControl.initiate();
+
+        clickOn("#btnWake");
+
+        WaitForAsyncUtils.sleep(23, TimeUnit.SECONDS);
+        assertStatus("LIME");
+    }
+
     @Nested
     class WakeOnHostTest {
         @Test
@@ -80,6 +97,18 @@ class HostControlTest extends UIBaseTest {
 
             verify(mockWakeOnService, times(1)).wake(indexOne);
             assertStatus("SILVER");
+        }
+
+        @Test
+        void whenClickWakeShouldBlinkStatus() throws ServiceException {
+            doNothing().when(mockWakeOnService).wake(any(Index.class));
+            clickOn("#btnWake");
+
+            WaitForAsyncUtils.sleep(1000, TimeUnit.MILLISECONDS);
+            assertStatus("CRIMSON");
+            WaitForAsyncUtils.sleep(400, TimeUnit.MILLISECONDS);
+            assertStatus("SILVER");
+            verify(mockWakeOnService, times(1)).wake(indexOne);
         }
     }
 
@@ -116,7 +145,6 @@ class HostControlTest extends UIBaseTest {
             assertStatus("CRIMSON");
         }
     }
-
 
     private void assertHostName() {
         verifyThat(SIMPLE_HOST, NodeMatchers.isVisible());

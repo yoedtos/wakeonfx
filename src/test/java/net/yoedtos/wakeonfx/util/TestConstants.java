@@ -23,11 +23,11 @@ public class TestConstants {
     public static final String JSON_HOSTS =
             "[{\"name\":\"Simple Host\"," +
                     "\"address\":{\"ip\":\"127.0.0.1\",\"mac\":[\"00\",\"90\",\"27\",\"8B\",\"56\",\"20\"]}," +
-                    "\"port\":9000}," +
+                    "\"port\":9000,\"timeout\":40}," +
                     "{\"name\":\"SecureOn Host\"," +
                     "\"address\":{\"ip\":\"127.0.0.2\",\"mac\":[\"00\",\"1B\",\"27\",\"8B\",\"56\",\"4F\"]," +
                     "\"secureOn\":[\"00\",\"00\",\"00\",\"00\",\"00\",\"00\"]}," +
-                    "\"port\":8000}]";
+                    "\"port\":8000,\"timeout\":40}]";
 
     public static final byte[] BIN_MAC_ADDRESS = {
             0x00, (byte) 0x90, 0x27, (byte) 0x8B, 0x56, 0x20};

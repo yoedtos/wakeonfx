@@ -1,5 +1,8 @@
 package net.yoedtos.wakeonfx.control;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -13,9 +16,13 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import javafx.util.Duration;
 import net.yoedtos.wakeonfx.exceptions.ServiceException;
+import net.yoedtos.wakeonfx.service.HostService;
 import net.yoedtos.wakeonfx.service.MonitorService;
 import net.yoedtos.wakeonfx.service.WakeOnService;
 import org.slf4j.Logger;
@@ -27,12 +34,16 @@ import java.util.concurrent.TimeUnit;
 
 public class HostControl implements EventHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(HostControl.class);
+    private static final int DEFAULT_TIMEOUT = 5;
 
     private Index index;
     private Rectangle status;
+    private int timeout = DEFAULT_TIMEOUT;
+    private Timeline timeline;
 
     private WakeOnService wakeOnService;
     private MonitorService monitorService;
+    private HostService hostService;
     private ScheduledExecutorService scheduler;
 
     private final Service<Status> wakeTask = new Service<>() {
@@ -42,6 +53,7 @@ public class HostControl implements EventHandler {
                 @Override
                 protected Status call() throws Exception {
                     wakeOnService.wake(index);
+                    blinkStatus(timeout);
                     return Status.OFF_LINE;
                 }
             };
@@ -51,6 +63,7 @@ public class HostControl implements EventHandler {
     public HostControl() {
         wakeOnService = new WakeOnService();
         monitorService = new MonitorService();
+        hostService = new HostService();
     }
 
     public VBox getHostView(Index index) {
@@ -72,6 +85,7 @@ public class HostControl implements EventHandler {
         status.setArcHeight(5.0);
         status.setArcWidth(5.0);
         status.setFill(Paint.valueOf("SILVER"));
+        setAnimation(status);
 
         var btnWake = new Button(null, new ImageView(View.Icons.HOST));
         btnWake.setId("btnWake");
@@ -87,6 +101,12 @@ public class HostControl implements EventHandler {
     }
 
     public void initiate() {
+        try {
+            timeout = hostService.get(index.getId()).getTimeout();
+        } catch (Exception e) {
+            LOGGER.error(e.toString());
+            LOGGER.info("Default timeout in use: {} s", DEFAULT_TIMEOUT);
+        }
         startScheduler();
     }
 
@@ -104,7 +124,10 @@ public class HostControl implements EventHandler {
             LOGGER.error(e.getSource().getMessage());
             new Alert(Alert.AlertType.ERROR, View.Error.WAKE).show();
         });
-        wakeTask.start();
+
+        if(status.getFill() == Color.CRIMSON || status.getFill() == Color.SILVER ) {
+            wakeTask.start();
+        }
     }
 
     private void startScheduler() {
@@ -118,11 +141,30 @@ public class HostControl implements EventHandler {
                         LOGGER.error(e.getMessage());
                     }
                     var finalResult = result;
-                    Platform.runLater(() -> {
-                        assert finalResult != null;
-                        status.setFill(Paint.valueOf(finalResult.value));
-                    });
+                    if (timeline.getStatus() == Animation.Status.STOPPED) {
+                        Platform.runLater(() -> {
+                            assert finalResult != null;
+                            status.setFill(Paint.valueOf(finalResult.value));
+                        });
+                    }
                 },
                 3, 20, TimeUnit.SECONDS);
+    }
+
+    private void setAnimation(Shape shape) {
+         timeline = new Timeline(
+                new KeyFrame(Duration.millis(1000), e -> shape.setFill(Color.CRIMSON)),
+                new KeyFrame(Duration.millis(400), e -> shape.setFill(Color.SILVER))
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+    }
+
+    private void blinkStatus(int timeout) {
+        timeline.play();
+        var blinkTimer = new Timeline(
+                new KeyFrame(Duration.seconds(timeout), e -> timeline.stop())
+        );
+        blinkTimer.setCycleCount(1);
+        blinkTimer.play();
     }
 }

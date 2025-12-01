@@ -160,9 +160,9 @@
                                     <mainClass>net.yoedtos.wakeonfx.WakeOnFx</mainClass>
                                 </manifest>
                             </archive>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
+                            <descriptors>
+                                <descriptor>src/assembly/uber.xml</descriptor>
+                            </descriptors>
                         </configuration>
                     </execution>
                 </executions>

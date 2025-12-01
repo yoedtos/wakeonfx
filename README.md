@@ -1,6 +1,8 @@
 # WakeOn FX!
-A simple JavaFX tool to turn on a computer with Wake-On-LAN. Can monitor computer connectivity and running services.
+A simple JavaFX tool to turn on a computer with Wake-On-LAN (WoL). Can monitor computer connectivity and running services.
 
+> [!TIP]
+> You must enable **WoL** in both the system's BIOS/UEFI and in the OS's network adapter properties.
 ***
 
 This application require java 11. To easily set it, use:
@@ -22,6 +24,9 @@ This application require java 11. To easily set it, use:
 `mvn verify`
 
 to run test without gui just add `-Dheadless`
+
+### Run wakeonfx using uber-jar package
+`java -Dlogback.configurationFile=logback.xml -jar target/wakeonfx-1.1.0-uber.jar`
 
 ***
 

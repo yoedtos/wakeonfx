@@ -24,7 +24,7 @@
                </font>
             </Label>
             <Label layoutX="96.0" layoutY="123.0" text="JavaFX Wake On Lan client" />
-            <Label layoutX="52.0" layoutY="195.0" text="Version: 1.0" />
+            <Label layoutX="52.0" layoutY="195.0" text="Version: 1.1.0" />
             <Label layoutX="52.0" layoutY="220.0" text="Author: yoedtos" />
          </children>
       </AnchorPane>
